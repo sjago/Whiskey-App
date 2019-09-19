@@ -1,0 +1,13 @@
+<h1>Enter A Whiskey!</h1>
+
+<%= form_for whiskey do |f| %>
+	<%= f.label :name %>
+	<br>
+	<%= f.text_field :name %>
+	<br>
+	<%= f.label :description %>
+	<br>
+	<%= f.text_area :description, size: "60x12" %>
+    <br>
+	<%= f.submit %>
+<% end %>
