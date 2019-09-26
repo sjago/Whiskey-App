@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :whiskeys
+  resources :whiskeys do
+    resource :comments, only: [:create]
+  end
 
+  resources :users
 end

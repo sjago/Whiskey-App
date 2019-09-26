@@ -1,4 +1,13 @@
-<h1>Enter A Whiskey!</h1>
+<h1>Enter A Whiskey</h1>
+
+<% if whiskey.errors.any? %>
+	<h2>Errors!</h2>
+		<ul>
+			<% whiskey.errors.full_messages.each do |error| %>
+				<li><%= error %></li>
+			<% end %>
+		</ul>
+<% end %>
 
 <%= form_for whiskey do |f| %>
 	<%= f.label :name %>
@@ -11,3 +20,6 @@
     <br>
 	<%= f.submit %>
 <% end %>
+
+
+

@@ -1,2 +1,18 @@
 <h3><%= @whiskeys.name %></h3>
 <p><%= @whiskeys.description %></p>
+
+
+<%= form_for([@whiskeys, @comment]) do |f| %>
+	<p>
+		<%= f.label :content %>
+		<br>
+		<%= f.text_area :content %>
+	</p>	
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+
+

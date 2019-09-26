@@ -1,5 +1,4 @@
-class WhiskeysController < ActionController::Base
-
+class WhiskeysController < ApplicationController  
   def index
     @whiskeys = Whiskey.all
   end
@@ -12,8 +11,12 @@ class WhiskeysController < ActionController::Base
 
     attrs = params.require(:whiskey).permit(:name, :description)
     @whiskeys = Whiskey.new(attrs)
-    @whiskeys.save
-    redirect_to whiskey_path(@whiskeys)
+    
+    if @whiskeys.save
+      redirect_to whiskey_path(@whiskeys)
+    else
+      render :new
+    end
     
   end
 
@@ -26,6 +29,8 @@ class WhiskeysController < ActionController::Base
   def show
     
     @whiskeys = Whiskey.find(params[:id])
+    @comments = @whiskey.comments
+    @comment = @whiskey.comments.build
     
   end
 
@@ -33,8 +38,12 @@ class WhiskeysController < ActionController::Base
 
     @whiskeys = Whiskey.find(params[:id])
     attrs = params.require(:whiskey).permit(:name, :description)
-    @whiskeys.update(attrs)
-    redirect_to whiskey_path(@whiskeys)
+    
+    if @whiskeys.update(attrs)
+      redirect_to whiskey_path(@whiskeys)
+    else
+      render :edit
+    end
     
   end
 
