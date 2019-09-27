@@ -29,8 +29,8 @@ class WhiskeysController < ApplicationController
   def show
     
     @whiskeys = Whiskey.find(params[:id])
-    @comments = @whiskey.comments
-    @comment = @whiskey.comments.build
+    @comments = @whiskeys.comments
+    @comment = @whiskeys.comments.build
     
   end
 

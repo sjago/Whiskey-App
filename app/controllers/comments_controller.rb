@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
     @whiskey = Whiskey.find(params[:whiskey_id])
     attrs = params.require(:comment).permit(:content).merge(whiskey_id: @whiskey.id)
     @comment = Comment.new(attrs)
+    @comment.save
     redirect_to whiskey_path(@whiskey)
+
   end
-
-
 
 
 end
