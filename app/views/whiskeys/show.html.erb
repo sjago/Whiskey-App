@@ -1,5 +1,8 @@
-<h3><%= @whiskeys.name %></h3>
+<h2><%= @whiskeys.name %></h2>
+<h4>Description</h4>
 <p><%= @whiskeys.description %></p>
+<h4>Style</h4>
+<p><%= @whiskeys.style %></p>
 
 
 <%= form_for([@whiskeys, @comment]) do |f| %>

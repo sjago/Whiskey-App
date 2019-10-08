@@ -5,4 +5,7 @@ class Whiskey < ActiveRecord::Base
 
   has_many :comments
 
+  has_many :whiskey_categories
+  has_many :categories, through: :whiskey_categories
+
 end

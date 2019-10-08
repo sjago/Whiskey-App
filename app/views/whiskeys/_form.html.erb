@@ -18,6 +18,16 @@
 	<br>
 	<%= f.text_area :description, size: "60x12" %>
     <br>
+    <%= f.label :style %>
+	<br>
+	<%= f.select :style, ['Irish', 'Japanese', 'Scotch', 'Bourbon', 'Rye']%>
+    <br>
+    <%= f.label :flavours %>
+    <br>
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |cat|%>
+    	<%= cat.label {cat.check_box() + cat.text } %>
+    <%end%>
+    <br>
 	<%= f.submit %>
 <% end %>
 

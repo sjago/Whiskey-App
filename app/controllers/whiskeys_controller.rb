@@ -9,7 +9,7 @@ class WhiskeysController < ApplicationController
 
   def create
 
-    attrs = params.require(:whiskey).permit(:name, :description)
+    attrs = params.require(:whiskey).permit(:name, :description, :style, category_ids: [])
     @whiskeys = Whiskey.new(attrs)
     
     if @whiskeys.save
@@ -37,7 +37,7 @@ class WhiskeysController < ApplicationController
   def update
 
     @whiskeys = Whiskey.find(params[:id])
-    attrs = params.require(:whiskey).permit(:name, :description)
+    attrs = params.require(:whiskey).permit(:name, :description, :style)
     
     if @whiskeys.update(attrs)
       redirect_to whiskey_path(@whiskeys)

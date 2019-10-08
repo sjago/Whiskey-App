@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190926014917) do
+ActiveRecord::Schema.define(version: 20191008010915) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -28,11 +34,19 @@ ActiveRecord::Schema.define(version: 20190926014917) do
     t.datetime "updated_at"
   end
 
+  create_table "whiskey_categories", force: :cascade do |t|
+    t.integer  "whiskey_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "whiskeys", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "style"
   end
 
 end
