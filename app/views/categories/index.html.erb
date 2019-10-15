@@ -1,2 +1,11 @@
 <h1>Category Index</h1>
 
+<form action="/categories/new">
+    <input type="submit" value="Add Your Own Category!" />
+</form>
+
+
+<% @categories.each do |cat| %>
+	<p><%= cat.name %></p>
+	<hr>
+<% end %>

@@ -1,11 +1,16 @@
-<h1>Whiskey Index Page</h1>
+<h1>Whiskey Index</h1>
 
 <% @whiskeys.each do |whiskey| %>
-	<h4><%= whiskey.name %></h4>
+	<h4><a href="whiskeys/<%= whiskey.id %>"><%= whiskey.name %></a></h4>
 	<p><%= whiskey.description %></p>
 	<hr>
 <% end %>
 
+
+
+<% (1..@total_pages).each do |page| %>
+  <%= link_to("Page #{page} | ", whiskeys_path(page: page)) %>
+<% end %>
 
 
 

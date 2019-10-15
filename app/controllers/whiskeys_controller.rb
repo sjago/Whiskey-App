@@ -1,6 +1,14 @@
 class WhiskeysController < ApplicationController  
+
   def index
     @whiskeys = Whiskey.all
+    @whiskeys = Whiskey
+      .order(created_at: :desc)
+      .offset((page - 1) * per_page)
+      .limit(per_page)
+
+    @total_pages = (Whiskey.count / per_page.to_f).ceil
+
   end
 
   def new
@@ -9,7 +17,7 @@ class WhiskeysController < ApplicationController
 
   def create
 
-    attrs = params.require(:whiskey).permit(:name, :description, :style, category_ids: [])
+    attrs = params.require(:whiskey).permit(:name, :description, :style, :image, category_ids: [])
     @whiskeys = Whiskey.new(attrs)
     
     if @whiskeys.save
@@ -37,7 +45,7 @@ class WhiskeysController < ApplicationController
   def update
 
     @whiskeys = Whiskey.find(params[:id])
-    attrs = params.require(:whiskey).permit(:name, :description, :style)
+    attrs = params.require(:whiskey).permit(:name, :description, :style, :image, category_ids: [])
     
     if @whiskeys.update(attrs)
       redirect_to whiskey_path(@whiskeys)
@@ -46,5 +54,18 @@ class WhiskeysController < ApplicationController
     end
     
   end
+  private
+
+    def per_page
+      3
+    end
+
+    def page
+      return 1 if !params[:page]
+
+      params[:page].to_i
+    end    
+
+
 
 end

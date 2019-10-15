@@ -22,6 +22,10 @@
 	<br>
 	<%= f.select :style, ['Irish', 'Japanese', 'Scotch', 'Bourbon', 'Rye']%>
     <br>
+    <%= f.label :image %>
+    <br>
+    <%= f.file_field :image %>
+    <br>
     <%= f.label :flavours %>
     <br>
     <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |cat|%>

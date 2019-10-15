@@ -8,6 +8,14 @@
 </head>
 <body>
 
+<div class="topnav">
+		<%= link_to "Home", whiskeys_path %>
+		<%= link_to "Submit A Whiskey", '/whiskeys/new' %>
+		<%= link_to "Categories", categories_path %>
+</div>
+		
+
+
 <%= yield %>
 
 </body>
