@@ -3,3 +3,6 @@ class AddImageToWhiskeys < ActiveRecord::Migration
     add_column :whiskeys, :image, :string
   end
 end
+
+
+
