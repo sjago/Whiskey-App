@@ -7,5 +7,17 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: blog_development
+  database: whiskey_development
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: whiskey_test
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: whiskey_production
   pool: 5
